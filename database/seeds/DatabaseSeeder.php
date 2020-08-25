@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use Illuminate\Database\Seeder;
 use App\Category;
 use App\User;
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         User::truncate();
         Category::truncate();
+        Post::truncate();
 
         factory(User::class)->create([
             'name' => 'Admin',
@@ -31,5 +33,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         factory(Category::class, 5)->create();
+        factory(Post::class, 15)->create();
     }
 }

@@ -48,6 +48,9 @@
                     <!-- Authentication Links -->
                     @auth
                         <li class="nav-item">
+                            <a class="nav-link" href="{{route('posts.index')}}">Post</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{route('categories.index')}}">Category</a>
                         </li>
                     @endauth

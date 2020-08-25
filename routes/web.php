@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/categories/status/update/{category}', 'CategoryController@statusUpdate')->name('categories.status.update');
 Route::resource('/categories','CategoryController');
+Route::get('/posts/status/update/{post}', 'PostController@statusUpdate')->name('posts.status.update');
+Route::resource('/posts','PostController');
