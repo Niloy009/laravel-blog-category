@@ -22,7 +22,8 @@
                         </div>
                         <div class="form-group custom-file">
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            <input type="file" name="img" value="{{$post->img}}" class="custom-file-input" id="inputGroupFile01"
+                            <input type="file" name="img" value="{{$post->img}}" class="custom-file-input"
+                                   id="inputGroupFile01"
                                    aria-describedby="inputGroupFileAddon01">
                         </div>
                         <div class="form-group">
@@ -31,6 +32,20 @@
                                 @foreach($categories as $category)
                                     <option
                                         value="{{$category->id}}" {{$category->id == $post->category_id ? 'selected' : '' }}>{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tag">Tags</label>
+                            <select multiple class="custom-select" name="tag_id[]">
+                                @foreach($tags as $id => $tag)
+                                    <option value="{{$id}}"
+                                    @foreach($post->tags as $val)
+                                        {{$val->id == $id ? 'selected': ''}}
+                                    @endforeach >
+                                        {{$tag->name}}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

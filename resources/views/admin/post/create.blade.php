@@ -24,15 +24,24 @@
                         <div class="form-group custom-file">
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             <input type="file" name="img" class="custom-file-input" id="inputGroupFile01"
-                                   aria-describedby="inputGroupFileAddon01">
+                                   aria-describedby="inputGroupFileAddon01"  accept="image/x-png">
+                            <span class="text-danger ">{{$errors->has('img') ? $errors->first('img') : ''}}</span>
 
                         </div>
 
                         <div class="form-group">
                             <label for="category">Category Name</label>
-                            <select class="custom-select" name="category_id">
+                            <select  class="custom-select" name="category_id">
                                 @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Tags</label>
+                            <select multiple class="custom-select" name="tag_id[]">
+                                @foreach($tags as $tag)
+                                <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
                             </select>
                         </div>

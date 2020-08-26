@@ -17,19 +17,21 @@
                             </div>
                         @endif
 
-                        <table class="table text-center">
+                        <table class="table text-center" id="posts">
                             <thead>
                             <tr>
                                 <th style="width: 5%">#</th>
-                                <th style="width: 14%">Title</th>
-                                <th style="width: 14%">Body</th>
-                                <th style="width: 14%">Status</th>
-                                <th style="width: 14%">image</th>
-                                <th style="width: 14%">Category</th>
+                                <th style="width: 15%">Title</th>
+                                <th style="width: 20%">Body</th>
+                                <th style="width: 10%">Status</th>
+                                <th style="width: 10%">image</th>
+                                <th style="width: 10%">Category</th>
+                                <th style="width: 10%">Tag</th>
                                 <th style="width: 20%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
+
                             @php($i = 1)
                             @foreach($posts as $post)
                                 <tr>
@@ -42,9 +44,16 @@
                                             {{$post->status == 1 ? 'Active' : 'Inactive'}}
                                         </a>
                                     </td>
-                                    <td><img src="{{asset('uploads/'. $post->img)}}" class="card-img-top" alt="img">
+                                    <td>
+                                        <img src="{{asset('uploads/'. $post->img)}}" class="card-img-top" alt="img">
+{{--                                        <img src="{{asset($post->img)}}" class="card-img-top" alt="img">--}}
                                     </td>
                                     <td>{{$post->category->name}}</td>
+                                    <td>
+                                        @foreach($post->tags as $tag)
+                                            <span class="badge badge-success">{{$tag->name}}</span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <a href="{{route('posts.edit', $post->id)}}"
                                            class="btn btn-primary btn-sm">Edit</a>
@@ -70,4 +79,20 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    {{--    <script>--}}
+    {{--    $(document).ready( function () {--}}
+    {{--        $('#posts').DataTable();--}}
+    {{--    } );--}}
+    {{--    </script>--}}
+    <script>
+        $(document).ready(function () {
+            $('#posts').DataTable({
+                "columnDefs": [
+                    {"orderable": false, "targets": [4, 6]}
+                ]
+            });
+        });
+    </script>
 @endsection
