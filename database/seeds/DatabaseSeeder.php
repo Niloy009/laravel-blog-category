@@ -6,6 +6,9 @@ use App\Category;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Tag;
+use App\Forum;
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -22,6 +25,8 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
         Post::truncate();
         Tag::truncate();
+        Forum::truncate();
+
 
         factory(User::class)->create([
             'name' => 'Admin',
@@ -35,6 +40,7 @@ class DatabaseSeeder extends Seeder
 
         factory(Category::class, 5)->create();
         factory(Post::class, 200)->create();
+        factory(Forum::class, 200)->create();
         factory(Tag::class, 200)->create();
     }
 }

@@ -22,3 +22,5 @@ Route::get('/categories/status/update/{category}', 'CategoryController@statusUpd
 Route::resource('/categories','CategoryController');
 Route::get('/posts/status/update/{post}', 'PostController@statusUpdate')->name('posts.status.update');
 Route::resource('/posts','PostController');
+Route::get('/forums/status/update/{forum}', 'ForumController@statusUpdate')->name('forums.status.update');
+Route::resource('/forums','ForumController');

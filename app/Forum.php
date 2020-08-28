@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Forum extends Model
 {
+
     protected $fillable = ['title', 'body', 'status', 'img', 'user_id', 'category_id'];
 
     public function user()
@@ -24,8 +25,4 @@ class Post extends Model
         return $this->belongsToMany('App\Tag');
     }
 
-    public function comments()
-    {
-        return $this->belongsToMany('App\Tag');
-    }
 }

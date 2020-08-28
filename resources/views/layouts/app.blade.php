@@ -46,6 +46,10 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @auth
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('forums.index')}}">Forum</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('posts.index')}}">Post</a>
                         </li>
